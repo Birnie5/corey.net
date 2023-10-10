@@ -1,113 +1,145 @@
 body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: Arial, sans-serif;
+    margin: 0;  /* Removes default margin */
+    padding: 0;  /* Removes default padding */
+    height: 100%;  /* Sets height to occupy full viewport */
+    font-family: Arial, sans-serif;  /* Sets default font family */
 }
 
 .container {
-    display: flex;
-    height: 100%;
+    display: flex;  /* Enables flexbox layout */
+    height: 100%;  /* Ensures container takes full viewport height */
 }
 
 .left-column, .posts-column {
-    background-color: #f8f9fa;
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-    transition: transform 0.5s ease; 
+    background-color: #f8f9fa;  /* Sets background color */
+    width: 200px;  /* Fixes width */
+    display: flex;  /* Enables flexbox layout */
+    flex-direction: column;  /* Stacks children vertically */
+    padding: 20px;  /* Adds internal space */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);  /* Adds a shadow effect */
+    transition: transform 0.5s ease;  /* Smoothens transformation effects */
+    flex-shrink: 0;  /* Prevents element from shrinking */
+    flex-grow: 0;  /* Prevents element from growing */
 }
 
 .left-column h1, .posts-column h1 {
-    margin: 0;
-    font-size: 24px;
-    text-align: center;
+    margin: 0;  /* Removes default margin */
+    font-size: 24px;  /* Sets font size */
+    text-align: center;  /* Centers text horizontally */
 }
 
 .list-container {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    flex-grow: 1;  /* Allows element to occupy available vertical space */
+    display: flex;  /* Enables flexbox layout */
+    flex-direction: column;  /* Stacks children vertically */
+    justify-content: flex-start;  /* Aligns children to the start vertically */
 }
 
 .section {
-    padding: 10px;
+    padding: 10px;  /* Adds space inside the section */
 }
 
 .link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: black;
-    padding: 5px 0;
+    display: flex;  /* Enables flexbox layout for the links */
+    align-items: center;  /* Vertically aligns items in the link */
+    text-decoration: none;  /* Removes underlines from links */
+    color: black;  /* Sets text color for the links */
+    padding: 5px 0;  /* Adds vertical padding to the links */
 }
 
 .link img {
-    width: 24px;
-    margin-right: 10px;
+    width: 24px;  /* Sets width for link images */
+    margin-right: 10px;  /* Adds right-margin to link images */
 }
 
 .content {
-    flex-grow: 1;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex-grow: 1;  /* Enables the content area to grow */
+    padding: 20px;  /* Adds internal space */
+    display: flex;  /* Enables flexbox layout */
+    flex-direction: column;  /* Stacks children vertically */
+    align-items: center;  /* Centers children horizontally */
+    justify-content: center;  /* Centers children vertically */
+    flex-shrink: 1;  /* Allows the content area to shrink */
+    flex-grow: 1;  /* Allows the content area to grow */
 }
 
 .content h1, .content p {
-    text-align: center; 
+    text-align: center;  /* Centers text horizontally */
+}
+
+.content p {
+    text-align: left;
+	word-wrap: break-word;  /* Breaks the text at the end of the line */
+    overflow-wrap: break-word;  /* Breaks unbreakable text */
+    max-width: 40vw;  /* Limits maximum width of the paragraph */	
 }
 
 @media screen and (max-width: 1200px) { 
     .left-column {
-        transform: translateX(-220px); /* Hide the column */
+        transform: translateX(-220px);  /* Moves the left column out of view */
     }
 
     .posts-column {
-        transform: translateX(-500px); /* Hide the column */
+        transform: translateX(-500px);  /* Moves the posts column out of view */
     }
 }
 
 .link.active {
-    background-color: black;
-    color: white;
+    background-color: black;  /* Sets background color for active link */
+    color: white;  /* Sets text color for active link */
 }
 
 .link.active span {
-    color: white;
+    color: white;  /* Sets text color inside span for active link */
 }
 
 .link.active img {
-    filter: invert(100%);
+    filter: invert(100%);  /* Inverts colors for images in active link */
 }
 
 .post-item {
-    margin-bottom: 10px; /* Adds some space between post items */
+    margin-bottom: 10px;  /* Adds space below each post item */
 }
 
 .post-date {
-    display: block; /* Makes the date appear on a new line */
-    font-size: 0.9em; /* Makes the date text slightly smaller than the post text */
-    color: gray; /* Makes the date text gray */
+    display: block;  /* Puts date on a new line */
+    font-size: 0.9em;  /* Decreases font size for the date */
+    color: gray;  /* Sets color for the date */
 }
 
 #profile-pic {
-    width: 300px; /* or any other value */
-    height: auto; /* maintain aspect ratio */
+    width: 300px; /* Define width, can be adjusted */
+    height: auto; /* Auto-height to maintain aspect ratio */
 }
 
 .image-container {
-    display: flex;
-    align-items: center; /* This will align the images vertically in case they have different heights */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
 }
 
 .profile-pic {
-    margin-right: 10px; /* This adds some space between the images */
-	height: 200px;
-    width: 200px; /* Adjust the width as necessary */
+    cursor: zoom-in; /* Cursor shows zoom-in on hover */
+    margin-right: 10px; /* Space to the right of image */
+	height: 200px; /* Define height */
+    width: 200px; /* Define width */
 }
+
+.zoom-overlay {
+    position: fixed; /* Overlay position: fixed to viewport */
+    top: 0; /* Align top of overlay to viewport */
+    left: 0; /* Align left of overlay to viewport */
+    width: 100%; /* Full width of viewport */
+    height: 100%; /* Full height of viewport */
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    display: none; /* Initially hidden */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    cursor: zoom-out; /* Cursor indicates zoom-out on hover */
+}
+
+.zoom-overlay img {
+    max-width: 90%; /* Limit max width to 90% of viewport */
+    max-height: 90%; /* Limit max height to 90% of viewport */
+}
+
+
